@@ -27,6 +27,8 @@ namespace TankTrouble
         Rectangle quitGame;
 
         bool drawGameBtn, drawAboutBtn, drawHowToBtn, drawQuitBtn;
+
+        SoundPlayer menuMusic;
        
         public Form1()
         {
@@ -50,6 +52,9 @@ namespace TankTrouble
             aboutUs = new Rectangle(980, 254, 222, 55);
             howToPlay = new Rectangle(980, 177, 222, 55);
             quitGame = new Rectangle(980, 331, 222, 55);
+
+            menuMusic = new SoundPlayer(global::TankTrouble.Properties.Resources.warMusic2);
+            menuMusic.PlayLooping();
 
         }
        
@@ -122,7 +127,11 @@ namespace TankTrouble
         {
             //Play game
             if (e.Location.X > playGame.Left && e.Location.X < playGame.Right && e.Location.Y > playGame.Top && e.Location.Y < playGame.Bottom)
+            {
                 drawScene = true;
+                menuMusic.Stop();
+            }
+               
 
             //How to play
             if (e.Location.X > aboutUs.Left && e.Location.X < aboutUs.Right && e.Location.Y > aboutUs.Top && e.Location.Y < aboutUs.Bottom)
