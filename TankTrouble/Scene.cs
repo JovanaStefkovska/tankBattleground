@@ -5,26 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
+
 namespace TankTrouble
 {
     public class Scene
     {
 
-       public readonly int FIELD_WIDTH = 900;
-       public readonly int FIELD_HEIGHT = 600;
-       public readonly int block_WIDTH = 10;
+        public readonly int FIELD_WIDTH = 900;
+        public readonly int FIELD_HEIGHT = 600;
+        public readonly int block_WIDTH = 10;
         public readonly int block_HEIGHT = 10;
-       public readonly int frame_HEIGHT = 50;
-       public readonly int frame_width = 50;
-       public readonly int sidePanel = 300;
-       public List<Keys> pressedKeys;
-       public Rectangle boundsRectangle;
+        public readonly int frame_HEIGHT = 50;
+        public readonly int frame_width = 50;
+        public readonly int sidePanel = 300;
+        public List<Keys> pressedKeys;
+        public Rectangle boundsRectangle;
         public bool[][] blockMatrix;
         public Rectangle[][] rectangleMatrix;
         public Tank Tank1, Tank2;
+        SoundPlayer fireSound;
+        
+
         public Scene()
         {
-            
+            fireSound = new SoundPlayer(global::TankTrouble.Properties.Resources.fire);
+           
         }
 
         public void Game()
@@ -213,6 +219,9 @@ namespace TankTrouble
        {
            if (e.KeyChar == (char)Keys.Tab)
            {
+               //Fire sound
+               fireSound.Play();
+
                if (!Tank1.isDead)
                {
                    if (Tank1.tankDirection == Direction.Right)
@@ -228,6 +237,9 @@ namespace TankTrouble
            }
            if (e.KeyChar == (char) Keys.Space)
            {
+               //Fire sound
+               fireSound.Play();
+
                if (!Tank2.isDead)
                {
                    if (Tank2.tankDirection == Direction.Right)

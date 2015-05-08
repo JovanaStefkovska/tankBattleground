@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace TankTrouble
 {
@@ -20,12 +21,13 @@ namespace TankTrouble
         public Direction tankDirection;
         Rectangle bounds, tankRectangle;
         public List<Bullet> bullets;
-           public bool shouldDraw;
-            Timer timer_explosion;
-            TankColor color;
-           public bool isDead;
-            public Tank otherTank;
-            public Rectangle[][] rectangleMatrix;
+        public bool shouldDraw;
+        Timer timer_explosion;
+        TankColor color;
+        public bool isDead;
+        public Tank otherTank;
+        public Rectangle[][] rectangleMatrix;
+        SoundPlayer explodeSound;
         
         public Tank(TankColor c, Direction d, Rectangle r, int x, int y)
         {
@@ -45,9 +47,8 @@ namespace TankTrouble
             timer_explosion = new Timer();
             timer_explosion.Interval = 1000;
             timer_explosion.Tick += new EventHandler(timer_explosion_tick);
-           
-
-
+            explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
+     
         }
 
         public void addOtherTank(Tank t)
@@ -285,6 +286,7 @@ namespace TankTrouble
                         otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
                         
                         otherTank.isDead = true;
+                        explodeSound.Play();
                         timer_explosion.Start();
                     }
                         
