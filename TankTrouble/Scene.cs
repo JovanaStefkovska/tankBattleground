@@ -5,33 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Media;
-
 namespace TankTrouble
 {
     public class Scene
     {
 
-        public readonly int FIELD_WIDTH = 900;
-        public readonly int FIELD_HEIGHT = 600;
-        public readonly int block_WIDTH = 10;
+       public readonly int FIELD_WIDTH = 900;
+       public readonly int FIELD_HEIGHT = 600;
+       public readonly int block_WIDTH = 10;
         public readonly int block_HEIGHT = 10;
-        public readonly int frame_HEIGHT = 50;
-        public readonly int frame_width = 50;
-        public readonly int sidePanel = 300;
-        public List<Keys> pressedKeys;
-        public Rectangle boundsRectangle;
+       public readonly int frame_HEIGHT = 50;
+       public readonly int frame_width = 50;
+       public readonly int sidePanel = 300;
+       public List<Keys> pressedKeys;
+       public Rectangle boundsRectangle;
         public bool[][] blockMatrix;
         public Rectangle[][] rectangleMatrix;
         public Tank Tank1, Tank2;
-        public SoundPlayer backgroundMusic;
-        public SoundPlayer firedBullet;
-
-
         public Scene()
         {
-            backgroundMusic = new SoundPlayer(global::TankTrouble.Properties.Resources.warMusic1);
-            firedBullet = new SoundPlayer(global::TankTrouble.Properties.Resources.fire);
+            
         }
 
         public void Game()
@@ -39,7 +32,7 @@ namespace TankTrouble
            
             boundsRectangle = new Rectangle(frame_width, frame_HEIGHT, FIELD_WIDTH, FIELD_HEIGHT);
            
-            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 30);
+            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 20);
             Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH -80, FIELD_HEIGHT-60);
             pressedKeys = new List<Keys>();
             Tank1.addOtherTank(Tank2);
@@ -64,7 +57,7 @@ namespace TankTrouble
             {
                 for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
                 {
-                    if (i == 10 && j > 30 && j < 60)
+                    if (i == 10 && j > 33 && j < 60)
                     {
                         blockMatrix[i][j] = true;
                        
@@ -77,7 +70,7 @@ namespace TankTrouble
                     {
                         blockMatrix[i][j] = true;
                     }
-                    if (j == 30 && i >= 20 && i <= 28)
+                    if (j == 30 && i >= 20 && i < 28)
                     {
                         blockMatrix[i][j] = true;
                     }
@@ -220,8 +213,6 @@ namespace TankTrouble
        {
            if (e.KeyChar == (char)Keys.Tab)
            {
-               this.firedBullet.Play();
-
                if (!Tank1.isDead)
                {
                    if (Tank1.tankDirection == Direction.Right)
@@ -237,8 +228,6 @@ namespace TankTrouble
            }
            if (e.KeyChar == (char) Keys.Space)
            {
-               this.firedBullet.Play();
-
                if (!Tank2.isDead)
                {
                    if (Tank2.tankDirection == Direction.Right)

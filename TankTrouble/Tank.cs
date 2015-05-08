@@ -97,7 +97,7 @@ namespace TankTrouble
 
                         if (tankDirection == Direction.Up)
                         {
-                           Rectangle tnkRectangle = new Rectangle(X, Y - 5, tankImage.Width, tankImage.Height );
+                           Rectangle tnkRectangle = new Rectangle(X, Y - 10, tankImage.Width, tankImage.Height );
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -112,7 +112,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Down)
                         {
-                            Rectangle tnkRectangle = new Rectangle(X, Y + 5, tankImage.Width, tankImage.Height);
+                            Rectangle tnkRectangle = new Rectangle(X, Y + 10, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -129,7 +129,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Left)
                         {
-                            Rectangle tnkRectangle = new Rectangle(X - 5, Y, tankImage.Width, tankImage.Height);
+                            Rectangle tnkRectangle = new Rectangle(X - 10, Y, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -143,7 +143,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Right)
                         {
-                           Rectangle tnkRectangle = new Rectangle(X + 5, Y, tankImage.Width, tankImage.Height);
+                           Rectangle tnkRectangle = new Rectangle(X + 10, Y, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -168,14 +168,52 @@ namespace TankTrouble
                 return true;
         }
 
-       
 
+        public bool check(Direction direction)
+        {
+            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
+            {
+                for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
+                {
+                    Rectangle rect = new Rectangle(X, Y, tankImage.Width, tankImage.Height);
+                    if (direction == Direction.Up)
+                    {
+                    
+                        rect = new Rectangle(X, Y - 3, tankImage.Width, tankImage.Height);
+                    }
+                    if (direction == Direction.Left)
+                    {
+                        
+                        rect = new Rectangle(X - 3, Y, tankImage.Width, tankImage.Height);
+                    }
+                    if (direction == Direction.Right)
+                    {
+
+                        rect = new Rectangle(X  + 3, Y, tankImage.Width, tankImage.Height);
+                    }
+                    if (direction == Direction.Down)
+                    {
+
+                        rect = new Rectangle(X , Y + 3, tankImage.Width, tankImage.Height);
+                    }
+                    if (rect.IntersectsWith(rectangleMatrix[i][j]))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+
+        }
         public void Move(Rectangle bounds, Direction direction)
         {
             if (!isDead)
             {
-                
 
+                if (!check(direction))
+                {
+                    return ;
+                }
                 if (direction.Equals(Direction.Up))
                 {
 

@@ -24,7 +24,7 @@ namespace TankTrouble
         Rectangle aboutUs;
         Rectangle howToPlay;
         Rectangle quitGame;
-        bool drawGameBtn, drawAboutBtn, drawHowToBtn, drawQuitBtn;
+       
         public Form1()
         {
             
@@ -40,7 +40,7 @@ namespace TankTrouble
             t.Tick += new EventHandler(timer_tick);
             t.Interval = 25;
             t.Start();
-            drawAboutBtn = drawGameBtn = drawHowToBtn = drawQuitBtn = false;
+
             //Menu buttons
 
             playGame = new Rectangle(980, 100, 222, 55);
@@ -82,16 +82,12 @@ namespace TankTrouble
        
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Pen p= new Pen (Color.Lime,4);
             Graphics graphics = e.Graphics;
-            if (drawGameBtn)
-                graphics.DrawRectangle(p, playGame);
-            else if (drawAboutBtn)
-                graphics.DrawRectangle(p, aboutUs);
-            else if (drawHowToBtn)
-                graphics.DrawRectangle(p, howToPlay);
-            else if (drawQuitBtn)
-                graphics.DrawRectangle(p, quitGame);
+          //  graphics.DrawImageUnscaledAndClipped(global::TankTrouble.Properties.Resources.welcome1,this.ClientRectangle);
+            graphics.FillRectangle(Brushes.Transparent, playGame);
+            graphics.FillRectangle(Brushes.Transparent, howToPlay);
+            graphics.FillRectangle(Brushes.Transparent, aboutUs);
+            graphics.FillRectangle(Brushes.Transparent, quitGame);
             
             if (drawScene)
             {
@@ -112,11 +108,7 @@ namespace TankTrouble
         {
             //Play game
             if (e.Location.X > playGame.Left && e.Location.X < playGame.Right && e.Location.Y > playGame.Top && e.Location.Y < playGame.Bottom)
-            {
                 drawScene = true;
-                scene.backgroundMusic.PlayLooping();
-            }
-                
 
             //How to play
             if (e.Location.X > aboutUs.Left && e.Location.X < aboutUs.Right && e.Location.Y > aboutUs.Top && e.Location.Y < aboutUs.Bottom)
@@ -134,38 +126,6 @@ namespace TankTrouble
             //Quit game
             if (e.Location.X > quitGame.Left && e.Location.X < quitGame.Right && e.Location.Y > quitGame.Top && e.Location.Y < quitGame.Bottom)
                 this.Close();
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-           
-            //Play game
-            if (e.Location.X > playGame.Left && e.Location.X < playGame.Right && e.Location.Y > playGame.Top && e.Location.Y < playGame.Bottom)
-                drawGameBtn = true;
-            else
-                drawGameBtn = false;
-
-            //How to play
-            if (e.Location.X > aboutUs.Left && e.Location.X < aboutUs.Right && e.Location.Y > aboutUs.Top && e.Location.Y < aboutUs.Bottom)
-            {
-                drawAboutBtn = true;
-            }
-            else
-                drawAboutBtn = false;
-
-            //About us
-            if (e.Location.X > howToPlay.Left && e.Location.X < howToPlay.Right && e.Location.Y > howToPlay.Top && e.Location.Y < howToPlay.Bottom)
-            {
-                drawHowToBtn = true;
-            }
-            else
-                drawHowToBtn = false;
-
-            //Quit game
-            if (e.Location.X > quitGame.Left && e.Location.X < quitGame.Right && e.Location.Y > quitGame.Top && e.Location.Y < quitGame.Bottom)
-                drawQuitBtn = true;
-            else
-                drawQuitBtn = false;
         }
 
         

@@ -61,15 +61,6 @@ namespace TankTrouble.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream fire {
-            get {
-                return ResourceManager.GetStream("fire", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap greenTank_down {
@@ -176,15 +167,6 @@ namespace TankTrouble.Properties {
             get {
                 object obj = ResourceManager.GetObject("redTank_Up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream warMusic1 {
-            get {
-                return ResourceManager.GetStream("warMusic1", resourceCulture);
             }
         }
         
