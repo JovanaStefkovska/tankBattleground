@@ -61,12 +61,11 @@ namespace TankTrouble.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.Drawing.Bitmap greenTank {
+        internal static System.IO.UnmanagedMemoryStream fire {
             get {
-                object obj = ResourceManager.GetObject("greenTank", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetStream("fire", resourceCulture);
             }
         }
         
@@ -106,6 +105,16 @@ namespace TankTrouble.Properties {
         internal static System.Drawing.Bitmap greenTank_up {
             get {
                 object obj = ResourceManager.GetObject("greenTank_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap howtoplay {
+            get {
+                object obj = ResourceManager.GetObject("howtoplay", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +162,9 @@ namespace TankTrouble.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap redTank_right {
+        internal static System.Drawing.Bitmap redTank_Right {
             get {
-                object obj = ResourceManager.GetObject("redTank_right", resourceCulture);
+                object obj = ResourceManager.GetObject("redTank_Right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -167,6 +176,15 @@ namespace TankTrouble.Properties {
             get {
                 object obj = ResourceManager.GetObject("redTank_Up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream warMusic1 {
+            get {
+                return ResourceManager.GetStream("warMusic1", resourceCulture);
             }
         }
         

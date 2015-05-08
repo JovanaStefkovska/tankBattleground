@@ -97,7 +97,7 @@ namespace TankTrouble
 
                         if (tankDirection == Direction.Up)
                         {
-                           Rectangle tnkRectangle = new Rectangle(X, Y - 10, tankImage.Width, tankImage.Height );
+                           Rectangle tnkRectangle = new Rectangle(X, Y - 5, tankImage.Width, tankImage.Height );
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -112,11 +112,13 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Down)
                         {
-                            Rectangle tnkRectangle = new Rectangle(X, Y + 10, tankImage.Width, tankImage.Height);
+                            Rectangle tnkRectangle = new Rectangle(X, Y + 5, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
                             }
+
+                            
 
                             if (otherTank.tankRectangle.IntersectsWith(tankRectangle))
                             {
@@ -127,7 +129,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Left)
                         {
-                            Rectangle tnkRectangle = new Rectangle(X - 10, Y, tankImage.Width, tankImage.Height);
+                            Rectangle tnkRectangle = new Rectangle(X - 5, Y, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -141,7 +143,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Right)
                         {
-                           Rectangle tnkRectangle = new Rectangle(X + 10, Y, tankImage.Width, tankImage.Height);
+                           Rectangle tnkRectangle = new Rectangle(X + 5, Y, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -217,7 +219,7 @@ namespace TankTrouble
                     if (color == TankColor.Green)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
                     else
-                        tankImage = global::TankTrouble.Properties.Resources.redTank_right;
+                        tankImage = global::TankTrouble.Properties.Resources.redTank_Right;
                     if (X + tankImage.Width < bounds.Right)
                         X += 3;
                 }

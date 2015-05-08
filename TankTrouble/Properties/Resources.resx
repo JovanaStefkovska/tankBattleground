@@ -118,44 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="redTank_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\redTank_Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="kaboom1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kaboom1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="greenTank_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\greenTank_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
- 
- 
-  <data name="greenTank_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\greenTank_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-
-  <data name="greenTank" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\greenTank_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="redTank_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\redTank_Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="kaboom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kaboom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="welcome11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\welcome1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="howtoplay" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\howtoplay.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="greenTank_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\greenTank_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="greenTank_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\greenTank_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="greenTank_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\greenTank_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\greenTank_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="greenTank_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\greenTank_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="redTank_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redTank_Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="redTank_Left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\redTank_Left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="redTank_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\redTank_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="redTank_Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redTank_Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="greenTank_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\greenTank_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="redTank_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redTank_Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-
-  <data name="welcome11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\welcome1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fire.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="warMusic1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warMusic1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
