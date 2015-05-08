@@ -284,9 +284,15 @@ namespace TankTrouble
                     {
                         b.shouldDraw = false;
                         otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
+
+                        //Play explode sound
+                        if (!otherTank.isDead)
+                        {
+                            explodeSound.Play();
+                        }
                         
                         otherTank.isDead = true;
-                        explodeSound.Play();
+
                         timer_explosion.Start();
                     }
                         

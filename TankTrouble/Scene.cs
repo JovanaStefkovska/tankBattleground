@@ -220,7 +220,10 @@ namespace TankTrouble
            if (e.KeyChar == (char)Keys.Tab)
            {
                //Fire sound
-               fireSound.Play();
+               if (!Tank1.isDead)
+               {
+                   fireSound.Play();
+               }
 
                if (!Tank1.isDead)
                {
@@ -238,7 +241,10 @@ namespace TankTrouble
            if (e.KeyChar == (char) Keys.Space)
            {
                //Fire sound
-               fireSound.Play();
+               if (!Tank2.isDead)
+               {
+                   fireSound.Play();
+               }
 
                if (!Tank2.isDead)
                {
