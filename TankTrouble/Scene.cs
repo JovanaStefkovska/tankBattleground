@@ -26,16 +26,24 @@ namespace TankTrouble
         public Tank Tank1, Tank2;
         SoundPlayer fireSound;
 
-
+        public static int countPlayer1 = 0;
+        public static int countPlayer2 = 0;
         public int countTwoTimes = 0;
-        
 
+        Timer newGame;
         public Scene()
         {
             fireSound = new SoundPlayer(global::TankTrouble.Properties.Resources.fire);
-           
+             newGame = new Timer();
+            newGame.Interval = 1500;
+            newGame.Tick += new EventHandler(newGame_tick);
+            
         }
-
+        public void newGame_tick(object sender, EventArgs e)
+        {
+            Game();
+            newGame.Stop();
+        }
         public void Game()
         {
            
@@ -271,20 +279,31 @@ namespace TankTrouble
            
            if (Tank1.Destroy())
            {
-               
-               DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
-                MessageBoxButtons.OK);
-               if (rez == DialogResult.OK)
-                   return true;
+               countPlayer1++;
+               if (countPlayer1 == 5)
+               {
+                   DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
+                    MessageBoxButtons.OK);
+                   if (rez == DialogResult.OK)
+                       return true;
+               }
+               else
+                   newGame.Start();
             
            }
            else if (Tank2.Destroy())
            {
+               countPlayer2++;
+               if (countPlayer2 == 5)
+               {
+                   DialogResult rez = MessageBox.Show("Player 2 is Victorious !", "We have a winner !",
+                    MessageBoxButtons.OK);
+                   if (rez == DialogResult.OK)
+                       return true;
+               }
+               else
+                   newGame.Start();
                
-               DialogResult rez = MessageBox.Show("Player 2 is Victorious !", "We have a winner !",
-                MessageBoxButtons.OK);
-               if(rez == DialogResult.OK)
-                return true;
            }
            MoveTanks();
            return false;
@@ -299,6 +318,9 @@ namespace TankTrouble
            Color grassColor = Color.FromArgb(0, 92, 9);
            Brush b = new SolidBrush(grassColor);
            g.FillRectangle(b, boundsRectangle);
+           g.DrawImageUnscaledAndClipped(global::TankTrouble.Properties.Resources.greenTank_right, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, 140, Tank1.tankImage.Width, Tank1.tankImage.Height));
+           g.DrawImageUnscaledAndClipped(global::TankTrouble.Properties.Resources.redTank_Right, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, FIELD_HEIGHT - 160, Tank2.tankImage.Width, Tank2.tankImage.Height));
+          
             
            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
            {

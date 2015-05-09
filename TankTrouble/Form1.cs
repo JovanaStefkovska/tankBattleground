@@ -46,6 +46,8 @@ namespace TankTrouble
             scene = new Scene();
             this.Height = scene.FIELD_HEIGHT + 2 * scene.frame_HEIGHT;
             this.Width = scene.FIELD_WIDTH + 2 * scene.frame_width + scene.sidePanel;
+            labelPlayer1.Location = new Point(scene.FIELD_WIDTH + 2 * scene.frame_width, 200);
+            labelPlayer2.Location = new Point(scene.FIELD_WIDTH + 2 * scene.frame_width, scene.FIELD_HEIGHT - 100);
             drawScene = false;
             scene.Game();
              t = new Timer();
@@ -127,6 +129,8 @@ namespace TankTrouble
                 scene.Draw(graphics);
                
             }
+            labelPlayer1.Text = "Green Tank "+Scene.countPlayer1.ToString();
+            labelPlayer2.Text = "Red tank "+Scene.countPlayer2.ToString();
         }
 
        
@@ -142,6 +146,8 @@ namespace TankTrouble
             if (e.Location.X > playGame.Left && e.Location.X < playGame.Right && e.Location.Y > playGame.Top && e.Location.Y < playGame.Bottom)
             {
                 drawScene = true;
+                labelPlayer1.Visible = true;
+                labelPlayer2.Visible = true;
                 menuMusic.Stop();
             }
                
