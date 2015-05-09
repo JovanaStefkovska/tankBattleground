@@ -12,7 +12,7 @@ using System.Media;
 namespace TankTrouble
 {
     public enum Direction { Up, Down, Left, Right }
-    public enum TankColor { Blue, Red }
+    public enum TankColor { Green, Red }
 
     public partial class Form1 : Form
     {
@@ -33,14 +33,14 @@ namespace TankTrouble
         public Form1()
         {
             
-            InitializeComponent();
+            //InitializeComponent();
       
             load();
         }
 
         public void load()
         {
-           // InitializeComponent();
+            InitializeComponent();
 
             DoubleBuffered = true;
             scene = new Scene();

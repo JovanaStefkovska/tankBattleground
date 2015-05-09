@@ -32,7 +32,7 @@ namespace TankTrouble
             tankDirection = d;
             bullets = new List<Bullet>();
             bounds = r;
-            if (color == TankColor.Blue)
+            if (color == TankColor.Green)
                 tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
             else
                 tankImage = global::TankTrouble.Properties.Resources.redTank_Left;
@@ -72,10 +72,9 @@ namespace TankTrouble
       
         public void Draw(Graphics g)
         {
-            if (X == 0 && Y == 0)
-            {
-                shouldDraw = false;
-            }
+           
+                
+            
 
             if (shouldDraw)
             {
@@ -238,7 +237,7 @@ namespace TankTrouble
 
                   
 
-                    if (color == TankColor.Blue)
+                    if (color == TankColor.Green)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_up;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Up;
@@ -252,7 +251,7 @@ namespace TankTrouble
                 else if (direction.Equals(Direction.Down))
                 {
                    
-                    if (color == TankColor.Blue)
+                    if (color == TankColor.Green)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_down;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Down;
@@ -263,7 +262,7 @@ namespace TankTrouble
                 else if (direction.Equals(Direction.Left))
                 {
 
-                    if (color == TankColor.Blue)
+                    if (color == TankColor.Green)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_left;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Left;
@@ -273,7 +272,7 @@ namespace TankTrouble
                 }
                 else if (direction.Equals(Direction.Right))
                 {
-                    if (color == TankColor.Blue)
+                    if (color == TankColor.Green)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Right;
@@ -307,15 +306,17 @@ namespace TankTrouble
                     if (b.X > otherTank.X && b.X < otherTank.X + otherTank.tankImage.Width && b.Y > otherTank.Y && b.Y < otherTank.Y + otherTank.tankImage.Height)
                     {
                         b.shouldDraw = false;
-                       // otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
+                        
 
                         //Play explode sound
                         if (!otherTank.isDead)
                         {
                             explodeSound.Play();
+                            otherTank.isDead = true;
                         }
+                       
+                       
                         
-                        otherTank.isDead = true;
                         otherTank.clearBullets();
                         timer_explosion.Start();
                        
