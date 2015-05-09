@@ -68,6 +68,7 @@
             this.ClientSize = new System.Drawing.Size(395, 356);
             this.Controls.Add(this.labelPlayer2);
             this.Controls.Add(this.labelPlayer1);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
