@@ -27,7 +27,7 @@ namespace TankTrouble
         Rectangle quitGame;
 
         bool drawGameBtn, drawAboutBtn, drawHowToBtn, drawQuitBtn;
-
+        Timer t;
         SoundPlayer menuMusic;
        
         public Form1()
@@ -35,13 +35,20 @@ namespace TankTrouble
             
             InitializeComponent();
       
+            load();
+        }
+
+        public void load()
+        {
+           // InitializeComponent();
+
             DoubleBuffered = true;
             scene = new Scene();
             this.Height = scene.FIELD_HEIGHT + 2 * scene.frame_HEIGHT;
             this.Width = scene.FIELD_WIDTH + 2 * scene.frame_width + scene.sidePanel;
             drawScene = false;
             scene.Game();
-            Timer t = new Timer();
+             t = new Timer();
             t.Tick += new EventHandler(timer_tick);
             t.Interval = 25;
             t.Start();
@@ -57,8 +64,6 @@ namespace TankTrouble
             menuMusic.PlayLooping();
 
         }
-       
-        
         
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -82,8 +87,16 @@ namespace TankTrouble
 
         public void timer_tick(object sender, EventArgs e)
         {
-            scene.timerTick();
-            Invalidate();
+            if (scene.timerTick())
+            {
+                while (Controls.Count > 0)
+                {
+                    Controls[0].Dispose();
+                }
+                t.Stop();
+                load();
+            }
+            else Invalidate();
         }
 
 

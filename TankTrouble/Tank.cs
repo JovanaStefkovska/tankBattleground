@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Media;
 
 namespace TankTrouble
 {
@@ -61,25 +61,45 @@ namespace TankTrouble
         }
         void timer_explosion_tick(object sender, EventArgs e)
         {
-            otherTank.shouldDraw = false;
+           otherTank.shouldDraw = false;
             
             if (!shouldDraw)
             {
+               
              timer_explosion.Stop();
-             
+
             }
         }
+
+        
+      
         public void Draw(Graphics g)
         {
+            if (X == 0 && Y == 0)
+            {
+                shouldDraw = false;
+            }
+
             if (shouldDraw)
             {
-                tankRectangle = new Rectangle(X, Y, tankImage.Width, tankImage.Height);
-                g.DrawImageUnscaledAndClipped(tankImage, tankRectangle);
-                foreach (Bullet b in bullets)
+                 if (isDead)
                 {
-                    b.Draw(g);
+                    tankImage = global::TankTrouble.Properties.Resources.kaboom1;
+                    tankRectangle = new Rectangle(X, Y, tankImage.Width, tankImage.Height);
+                    g.DrawImageUnscaledAndClipped(tankImage, tankRectangle);
+                    
+                 }
+               else
+                {
+                    tankRectangle = new Rectangle(X, Y, tankImage.Width, tankImage.Height);
+                    g.DrawImageUnscaledAndClipped(tankImage, tankRectangle);
+                    foreach (Bullet b in bullets)
+                    {
+                        b.Draw(g);
+                    }
                 }
             }
+            
 
             
         }
@@ -184,24 +204,20 @@ namespace TankTrouble
                     }
                     if (direction == Direction.Left)
                     {
-                        
                         rect = new Rectangle(X - 3, Y, tankImage.Width, tankImage.Height);
                     }
                     if (direction == Direction.Right)
                     {
-
                         rect = new Rectangle(X  + 3, Y, tankImage.Width, tankImage.Height);
                     }
                     if (direction == Direction.Down)
                     {
-
                         rect = new Rectangle(X , Y + 3, tankImage.Width, tankImage.Height);
                     }
                     if (rect.IntersectsWith(rectangleMatrix[i][j]))
                     {
                         return false;
                     }
-
                     if (rect.IntersectsWith(otherTank.tankRectangle))
                     {
                         return false;
@@ -278,7 +294,13 @@ namespace TankTrouble
             foreach (Bullet b in bullets)
                 b.Move(blockMatrix, rectangleMatrix);
         }
-        public void Destroy()
+
+        public void clearBullets()
+        {
+            bullets.Clear();
+        }
+      
+        public bool Destroy()
         {
 
             foreach (Bullet b in bullets)
@@ -288,7 +310,7 @@ namespace TankTrouble
                     if (b.X > otherTank.X && b.X < otherTank.X + otherTank.tankImage.Width && b.Y > otherTank.Y && b.Y < otherTank.Y + otherTank.tankImage.Height)
                     {
                         b.shouldDraw = false;
-                        otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
+                       // otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
 
                         //Play explode sound
                         if (!otherTank.isDead)
@@ -297,13 +319,18 @@ namespace TankTrouble
                         }
                         
                         otherTank.isDead = true;
-
+                        otherTank.clearBullets();
                         timer_explosion.Start();
+                       
+                       
+                        return true;
+                        
                     }
                         
                 }
+                
             }
-            
+            return false;
 
             
         }

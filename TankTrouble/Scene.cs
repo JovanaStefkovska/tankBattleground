@@ -25,6 +25,9 @@ namespace TankTrouble
         public Rectangle[][] rectangleMatrix;
         public Tank Tank1, Tank2;
         SoundPlayer fireSound;
+
+
+        public int countTwoTimes = 0;
         
 
         public Scene()
@@ -261,22 +264,41 @@ namespace TankTrouble
            }
        }
 
-       public void timerTick()
+       public bool timerTick()
        {
            Tank1.Fire(blockMatrix, rectangleMatrix);
            Tank2.Fire(blockMatrix, rectangleMatrix);
-           Tank1.Destroy();
-           Tank2.Destroy();
+           
+           if (Tank1.Destroy())
+           {
+               
+               DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
+                MessageBoxButtons.OK);
+               if (rez == DialogResult.OK)
+                   return true;
+            
+           }
+           else if (Tank2.Destroy())
+           {
+               
+               DialogResult rez = MessageBox.Show("Player 2 is Victorious !", "We have a winner !",
+                MessageBoxButtons.OK);
+               if(rez == DialogResult.OK)
+                return true;
+           }
            MoveTanks();
+           return false;
        }
 
 
        public void Draw(Graphics g)
        {
-           
-          
-           g.Clear(Color.DarkOrange);
-           g.FillRectangle(Brushes.DarkGreen, boundsRectangle);
+
+           Color background = Color.FromArgb(102, 51, 0);
+           g.Clear(background);
+           Color grassColor = Color.FromArgb(0, 92, 9);
+           Brush b = new SolidBrush(grassColor);
+           g.FillRectangle(b, boundsRectangle);
             
            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
            {
@@ -292,6 +314,29 @@ namespace TankTrouble
            Tank2.addMatrix(rectangleMatrix);
            Tank1.Draw(g);
            Tank2.Draw(g);
+           if (Tank1.isDead)
+           {
+               countTwoTimes++;
+               
+               if (countTwoTimes == 2)
+               {
+                   Tank1.X = 0;
+                   Tank1.Y = 0;
+               }
+              // Tank1.shouldDraw = false;
+           }
+           else  if (Tank2.isDead)
+           {
+               countTwoTimes++;
+              
+               if (countTwoTimes == 2)
+               {
+                    Tank2.X = 0;
+               Tank2.Y = 0;
+               }
+               //Tank2.shouldDraw = false;
+           }
+          
        }
 
        public void keyUp(KeyEventArgs e)
