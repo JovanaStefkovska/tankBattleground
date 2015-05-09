@@ -201,6 +201,11 @@ namespace TankTrouble
                     {
                         return false;
                     }
+
+                    if (rect.IntersectsWith(otherTank.tankRectangle))
+                    {
+                        return false;
+                    }
                 }
             }
             return true;
