@@ -51,7 +51,7 @@ namespace TankTrouble
            
             boundsRectangle = new Rectangle(frame_width, frame_HEIGHT, FIELD_WIDTH, FIELD_HEIGHT);
            
-            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 20);
+            Tank1 = new Tank(TankColor.Blue, Direction.Right, boundsRectangle, 30, 20);
             Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH -80, FIELD_HEIGHT-60);
             pressedKeys = new List<Keys>();
             Tank1.addOtherTank(Tank2);

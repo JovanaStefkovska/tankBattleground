@@ -35,7 +35,7 @@ namespace TankTrouble
             tankDirection = d;
             bullets = new List<Bullet>();
             bounds = r;
-            if (color == TankColor.Green)
+            if (color == TankColor.Blue)
                 tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
             else
                 tankImage = global::TankTrouble.Properties.Resources.redTank_Left;
@@ -241,7 +241,7 @@ namespace TankTrouble
 
                   
 
-                    if (color == TankColor.Green)
+                    if (color == TankColor.Blue)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_up;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Up;
@@ -255,7 +255,7 @@ namespace TankTrouble
                 else if (direction.Equals(Direction.Down))
                 {
                    
-                    if (color == TankColor.Green)
+                    if (color == TankColor.Blue)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_down;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Down;
@@ -266,7 +266,7 @@ namespace TankTrouble
                 else if (direction.Equals(Direction.Left))
                 {
 
-                    if (color == TankColor.Green)
+                    if (color == TankColor.Blue)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_left;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Left;
@@ -276,7 +276,7 @@ namespace TankTrouble
                 }
                 else if (direction.Equals(Direction.Right))
                 {
-                    if (color == TankColor.Green)
+                    if (color == TankColor.Blue)
                         tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
                     else
                         tankImage = global::TankTrouble.Properties.Resources.redTank_Right;

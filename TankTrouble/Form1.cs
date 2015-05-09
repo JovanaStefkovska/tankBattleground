@@ -12,7 +12,7 @@ using System.Media;
 namespace TankTrouble
 {
     public enum Direction { Up, Down, Left, Right }
-    public enum TankColor { Green, Red }
+    public enum TankColor { Blue, Red }
 
     public partial class Form1 : Form
     {
@@ -129,7 +129,7 @@ namespace TankTrouble
                 scene.Draw(graphics);
                
             }
-            labelPlayer1.Text = "Green Tank "+Scene.countPlayer1.ToString();
+            labelPlayer1.Text = "Blue Tank "+Scene.countPlayer1.ToString();
             labelPlayer2.Text = "Red tank "+Scene.countPlayer2.ToString();
         }
 
