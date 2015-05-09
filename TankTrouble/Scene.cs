@@ -29,7 +29,7 @@ namespace TankTrouble
         public static int countPlayer1 = 0;
         public static int countPlayer2 = 0;
         public int countTwoTimes = 0;
-
+        Image brick, redtank, greenTank;
         Timer newGame;
         public Scene()
         {
@@ -37,7 +37,9 @@ namespace TankTrouble
              newGame = new Timer();
             newGame.Interval = 1500;
             newGame.Tick += new EventHandler(newGame_tick);
-            
+            brick = global::TankTrouble.Properties.Resources.brick;
+            redtank = global::TankTrouble.Properties.Resources.redTank_Left;
+            greenTank = global::TankTrouble.Properties.Resources.greenTank_left;
         }
         public void newGame_tick(object sender, EventArgs e)
         {
@@ -318,8 +320,8 @@ namespace TankTrouble
            Color grassColor = Color.FromArgb(0, 92, 9);
            Brush b = new SolidBrush(grassColor);
            g.FillRectangle(b, boundsRectangle);
-           g.DrawImageUnscaledAndClipped(global::TankTrouble.Properties.Resources.greenTank_right, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, 140, Tank1.tankImage.Width, Tank1.tankImage.Height));
-           g.DrawImageUnscaledAndClipped(global::TankTrouble.Properties.Resources.redTank_Right, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, FIELD_HEIGHT - 160, Tank2.tankImage.Width, Tank2.tankImage.Height));
+           g.DrawImageUnscaledAndClipped(greenTank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, 140, Tank1.tankImage.Width, Tank1.tankImage.Height));
+           g.DrawImageUnscaledAndClipped(redtank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, FIELD_HEIGHT - 160, Tank2.tankImage.Width, Tank2.tankImage.Height));
           
             
            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
@@ -329,7 +331,7 @@ namespace TankTrouble
                    if (blockMatrix[i][j])
                    {
                        rectangleMatrix[i][j] = new Rectangle(j * block_WIDTH + frame_width, i * block_HEIGHT + frame_HEIGHT, block_WIDTH, block_HEIGHT);
-                       g.FillRectangle(Brushes.Maroon, rectangleMatrix[i][j]);
+                       g.DrawImageUnscaledAndClipped(brick, rectangleMatrix[i][j]);
                    }
            }
            Tank1.addMatrix(rectangleMatrix);
