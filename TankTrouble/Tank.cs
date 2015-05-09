@@ -11,10 +11,7 @@ namespace TankTrouble
 {
     public class Tank
     {
-        readonly int FIELD_WIDTH = 900;
-        readonly int FIELD_HEIGHT = 600;
-        readonly int block_WIDTH = 10;
-        readonly int block_HEIGHT = 10;
+       
         public int X;
         public int Y;
         public Image tankImage;
@@ -107,9 +104,9 @@ namespace TankTrouble
         {
            
 
-            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
+            for (int i = 0; i < Scene.FIELD_HEIGHT / Scene.block_HEIGHT; i++)
             {
-                for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
+                for (int j = 0; j < Scene.FIELD_WIDTH / Scene.block_WIDTH; j++)
                 {
                     
                    if (blockMatrix[i][j])
@@ -192,9 +189,9 @@ namespace TankTrouble
 
         public bool check(Direction direction)
         {
-            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
+            for (int i = 0; i < Scene.FIELD_HEIGHT / Scene.block_HEIGHT; i++)
             {
-                for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
+                for (int j = 0; j < Scene.FIELD_WIDTH / Scene.block_WIDTH; j++)
                 {
                     Rectangle rect = new Rectangle(X, Y, tankImage.Width, tankImage.Height);
                     if (direction == Direction.Up)
