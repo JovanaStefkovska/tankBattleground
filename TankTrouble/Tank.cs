@@ -42,7 +42,7 @@ namespace TankTrouble
             shouldDraw=true;
             isDead = false;
             timer_explosion = new Timer();
-            timer_explosion.Interval = 1000;
+            timer_explosion.Interval = 200;
             timer_explosion.Tick += new EventHandler(timer_explosion_tick);
             explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
      

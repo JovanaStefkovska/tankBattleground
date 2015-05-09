@@ -345,16 +345,16 @@ namespace TankTrouble
            Tank2.addMatrix(rectangleMatrix);
            Tank1.Draw(g);
            Tank2.Draw(g);
-           if (Tank1.isDead)
+         /*  if (Tank1.isDead)
            {
-               /*countTwoTimes++;
+               countTwoTimes++;
                
                if (countTwoTimes == 2)
                {
                    Tank1.X = 0;
                    Tank1.Y = 0;
                }
-              */ Tank1.shouldDraw = false;
+               Tank1.shouldDraw = false;
            }
            else  if (Tank2.isDead)
            {
@@ -364,9 +364,9 @@ namespace TankTrouble
                {
                     Tank2.X = 0;
                Tank2.Y = 0;
-               }*/
+               }
                Tank2.shouldDraw = false;
-           }
+           }*/
           
        }
 
