@@ -25,9 +25,10 @@ namespace TankTrouble
         public Tank otherTank;
         public Rectangle[][] rectangleMatrix;
         SoundPlayer explodeSound;
-        
+        public int killCount;
         public Tank(TankColor c, Direction d, Rectangle r, int x, int y)
         {
+            killCount = 0;
             this.color = c;
             tankDirection = d;
             bullets = new List<Bullet>();
@@ -47,7 +48,30 @@ namespace TankTrouble
             explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
      
         }
+        public void resetTank( Direction d,  int x, int y)
+        {
+            
+           
+            tankDirection = d;
+            bullets = new List<Bullet>();
+            
+            if (color == TankColor.Green)
+                tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
+            else
+                tankImage = global::TankTrouble.Properties.Resources.redTank_Left;
+            X = x + tankImage.Width / 2;
 
+            Y = y + tankImage.Height / 2;
+            
+            isDead = false;
+            shouldDraw = true;
+           timer_explosion = new Timer();
+            timer_explosion.Interval = 200;
+          timer_explosion.Tick += new EventHandler(timer_explosion_tick);
+          
+            explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
+
+        }
         public void addOtherTank(Tank t)
         {
             otherTank = t;
@@ -56,7 +80,7 @@ namespace TankTrouble
         {
             this.rectangleMatrix = rectangleMatrix;
         }
-        void timer_explosion_tick(object sender, EventArgs e)
+      void timer_explosion_tick(object sender, EventArgs e)
         {
            otherTank.shouldDraw = false;
             
@@ -64,16 +88,19 @@ namespace TankTrouble
             {
                
              timer_explosion.Stop();
+            
 
             }
+           
         }
 
         
       
         public void Draw(Graphics g)
         {
-           
-                
+
+            if (!isDead)
+                shouldDraw = true;
             
 
             if (shouldDraw)
@@ -313,12 +340,14 @@ namespace TankTrouble
                         {
                             explodeSound.Play();
                             otherTank.isDead = true;
+                            killCount++; 
+                            timer_explosion.Start();
                         }
                        
                        
                         
                         otherTank.clearBullets();
-                        timer_explosion.Start();
+                        
                        
                        
                         return true;

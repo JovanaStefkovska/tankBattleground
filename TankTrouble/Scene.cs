@@ -25,9 +25,8 @@ namespace TankTrouble
         public Rectangle[][] rectangleMatrix;
         public Tank Tank1, Tank2;
         SoundPlayer fireSound;
+       
 
-        public static int countPlayer1 = 0;
-        public static int countPlayer2 = 0;
         
         Image brick, greenTank, redTank;
         Timer newGame;
@@ -37,10 +36,13 @@ namespace TankTrouble
             brick = global::TankTrouble.Properties.Resources.brick;
             greenTank = global::TankTrouble.Properties.Resources.greenTank_left;
             redTank = global::TankTrouble.Properties.Resources.redTank_Left;
+            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 20);
+            Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH - 80, FIELD_HEIGHT - 60);
              newGame = new Timer();
             newGame.Interval = 1500;
             newGame.Tick += new EventHandler(newGame_tick);
-            
+
+           
         }
         public void newGame_tick(object sender, EventArgs e)
         {
@@ -50,15 +52,13 @@ namespace TankTrouble
         public void Game()
         {
 
-            if (countPlayer1 == 2 || countPlayer2 == 2)
-            {
-                countPlayer1 = 0;
-                countPlayer2 = 0;
-            }
-            boundsRectangle = new Rectangle(frame_width, frame_HEIGHT, FIELD_WIDTH, FIELD_HEIGHT);
            
-            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 20);
-            Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH -80, FIELD_HEIGHT-60);
+            boundsRectangle = new Rectangle(frame_width, frame_HEIGHT, FIELD_WIDTH, FIELD_HEIGHT);
+
+            Tank1.resetTank( Direction.Right,  30, 20);
+            Tank2.resetTank( Direction.Left, FIELD_WIDTH - 80, FIELD_HEIGHT - 60);
+            
+           
             pressedKeys = new List<Keys>();
             Tank1.addOtherTank(Tank2);
             Tank2.addOtherTank(Tank1);
@@ -284,11 +284,11 @@ namespace TankTrouble
        {
            Tank1.Fire(blockMatrix, rectangleMatrix);
            Tank2.Fire(blockMatrix, rectangleMatrix);
-           
+          
            if (Tank1.Destroy())
            {
-               countPlayer1++;
-               if (countPlayer1 == 2)
+             
+               if (Tank1.killCount == 2)
                {
                    DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
@@ -302,8 +302,9 @@ namespace TankTrouble
            }
            else if (Tank2.Destroy())
            {
-               countPlayer2++;
-               if (countPlayer2 == 2)
+              
+
+               if (Tank2.killCount == 2)
                {
                    DialogResult rez = MessageBox.Show("Player 2 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
@@ -345,28 +346,7 @@ namespace TankTrouble
            Tank2.addMatrix(rectangleMatrix);
            Tank1.Draw(g);
            Tank2.Draw(g);
-         /*  if (Tank1.isDead)
-           {
-               countTwoTimes++;
-               
-               if (countTwoTimes == 2)
-               {
-                   Tank1.X = 0;
-                   Tank1.Y = 0;
-               }
-               Tank1.shouldDraw = false;
-           }
-           else  if (Tank2.isDead)
-           {
-              /* countTwoTimes++;
-              
-               if (countTwoTimes == 2)
-               {
-                    Tank2.X = 0;
-               Tank2.Y = 0;
-               }
-               Tank2.shouldDraw = false;
-           }*/
+           
           
        }
 

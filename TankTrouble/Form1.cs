@@ -129,8 +129,8 @@ namespace TankTrouble
                 scene.Draw(graphics);
                
             }
-            labelPlayer1.Text = "Blue Tank "+Scene.countPlayer1.ToString();
-            labelPlayer2.Text = "Red tank "+Scene.countPlayer2.ToString();
+            labelPlayer1.Text = "Blue Tank "+scene.Tank1.killCount.ToString();
+            labelPlayer2.Text = "Red tank "+scene.Tank2.killCount.ToString();
         }
 
        
