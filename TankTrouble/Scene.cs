@@ -323,12 +323,13 @@ namespace TankTrouble
 
        public void Draw(Graphics g)
        {
-
-           Color background = Color.FromArgb(102, 51, 0);
+           Pen p = new Pen(new SolidBrush(Color.Black), 8);
+           Color background = Color.FromArgb(155, 116, 82);
            g.Clear(background);
            Color grassColor = Color.FromArgb(0, 92, 9);
            Brush b = new SolidBrush(grassColor);
            g.FillRectangle(b, boundsRectangle);
+           g.DrawRectangle(p, boundsRectangle);
            g.DrawImageUnscaledAndClipped(ground, boundsRectangle);
            g.DrawImageUnscaledAndClipped(greenTank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, 140, Tank1.tankImage.Width, Tank1.tankImage.Height));
            g.DrawImageUnscaledAndClipped(redTank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, FIELD_HEIGHT - 160, Tank2.tankImage.Width, Tank2.tankImage.Height));
@@ -348,7 +349,9 @@ namespace TankTrouble
            Tank2.addMatrix(rectangleMatrix);
            Tank1.Draw(g);
            Tank2.Draw(g);
-           
+
+           p.Dispose();
+           b.Dispose();
           
        }
 
