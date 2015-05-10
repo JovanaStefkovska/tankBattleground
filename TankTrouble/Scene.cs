@@ -28,7 +28,7 @@ namespace TankTrouble
 
         public  int countPlayer1 ;
         public  int countPlayer2 ;
-        public int countTwoTimes = 0;
+        
         Image brick, redtank, greenTank;
         Timer newGame;
         Image ground;
