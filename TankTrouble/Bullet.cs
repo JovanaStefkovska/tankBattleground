@@ -27,16 +27,18 @@ namespace TankTrouble
 
             direction = d;
             bounds = r;
-            brush = new SolidBrush(Color.Black);
+        
             shouldDraw = true;
         }
       
         public void Draw(Graphics g)
         {
+            brush = new SolidBrush(Color.Black);
             if (shouldDraw)
             {
                 g.FillEllipse(brush, X, Y, 8, 8);
             }
+            brush.Dispose();
             
         }
 

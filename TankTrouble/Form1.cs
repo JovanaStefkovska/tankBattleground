@@ -130,8 +130,9 @@ namespace TankTrouble
                 scene.Draw(graphics);
                
             }
+            p.Dispose();
             labelPlayer1.Text = "Blue Tank "+scene.countPlayer1.ToString();
-            labelPlayer2.Text = "Red tank "+scene.countPlayer2.ToString();
+            labelPlayer2.Text = "Red Tank "+scene.countPlayer2.ToString();
         }
 
        

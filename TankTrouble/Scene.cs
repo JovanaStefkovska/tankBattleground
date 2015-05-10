@@ -55,7 +55,7 @@ namespace TankTrouble
            
             boundsRectangle = new Rectangle(frame_width, frame_HEIGHT, FIELD_WIDTH, FIELD_HEIGHT);
            
-            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 30);
+            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 20);
             Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH -80, FIELD_HEIGHT-60);
             pressedKeys = new List<Keys>();
             Tank1.addOtherTank(Tank2);
@@ -286,7 +286,7 @@ namespace TankTrouble
            if (Tank1.Destroy())
            {
                countPlayer1++;
-               if (countPlayer1 == 5)
+               if (countPlayer1 == 3)
                {
                    DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
@@ -300,7 +300,7 @@ namespace TankTrouble
            else if (Tank2.Destroy())
            {
                countPlayer2++;
-               if (countPlayer2 == 5)
+               if (countPlayer2 == 3)
                {
                    DialogResult rez = MessageBox.Show("Player 2 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
