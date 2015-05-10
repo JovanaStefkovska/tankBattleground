@@ -286,7 +286,7 @@ namespace TankTrouble
            if (Tank1.Destroy())
            {
                countPlayer1++;
-               if (countPlayer1 == 3)
+               if (countPlayer1 == 5)
                {
                    DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
