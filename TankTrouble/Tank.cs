@@ -11,7 +11,10 @@ namespace TankTrouble
 {
     public class Tank
     {
-       
+        readonly int FIELD_WIDTH = 900;
+        readonly int FIELD_HEIGHT = 600;
+        readonly int block_WIDTH = 10;
+        readonly int block_HEIGHT = 10;
         public int X;
         public int Y;
         public Image tankImage;
@@ -25,10 +28,11 @@ namespace TankTrouble
         public Tank otherTank;
         public Rectangle[][] rectangleMatrix;
         SoundPlayer explodeSound;
-        public int killCount;
+
+        public int countTwoTimes;
+        
         public Tank(TankColor c, Direction d, Rectangle r, int x, int y)
         {
-            killCount = 0;
             this.color = c;
             tankDirection = d;
             bullets = new List<Bullet>();
@@ -46,32 +50,9 @@ namespace TankTrouble
             timer_explosion.Interval = 200;
             timer_explosion.Tick += new EventHandler(timer_explosion_tick);
             explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
-     
+            //countTwoTimes = 0;
         }
-        public void resetTank( Direction d,  int x, int y)
-        {
-            
-           
-            tankDirection = d;
-            bullets = new List<Bullet>();
-            
-            if (color == TankColor.Green)
-                tankImage = global::TankTrouble.Properties.Resources.greenTank_right;
-            else
-                tankImage = global::TankTrouble.Properties.Resources.redTank_Left;
-            X = x + tankImage.Width / 2;
 
-            Y = y + tankImage.Height / 2;
-            
-            isDead = false;
-            shouldDraw = true;
-           timer_explosion = new Timer();
-            timer_explosion.Interval = 200;
-          timer_explosion.Tick += new EventHandler(timer_explosion_tick);
-          
-            explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
-
-        }
         public void addOtherTank(Tank t)
         {
             otherTank = t;
@@ -80,28 +61,20 @@ namespace TankTrouble
         {
             this.rectangleMatrix = rectangleMatrix;
         }
-      void timer_explosion_tick(object sender, EventArgs e)
+        void timer_explosion_tick(object sender, EventArgs e)
         {
-           otherTank.shouldDraw = false;
-            
+            otherTank.shouldDraw = false;
             if (!shouldDraw)
-            {
-               
-             timer_explosion.Stop();
+                timer_explosion.Stop();
             
-
-            }
-           
+            
         }
 
         
       
         public void Draw(Graphics g)
         {
-
-            if (!isDead)
-                shouldDraw = true;
-            
+          
 
             if (shouldDraw)
             {
@@ -130,9 +103,9 @@ namespace TankTrouble
         {
            
 
-            for (int i = 0; i < Scene.FIELD_HEIGHT / Scene.block_HEIGHT; i++)
+            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
             {
-                for (int j = 0; j < Scene.FIELD_WIDTH / Scene.block_WIDTH; j++)
+                for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
                 {
                     
                    if (blockMatrix[i][j])
@@ -215,9 +188,9 @@ namespace TankTrouble
 
         public bool check(Direction direction)
         {
-            for (int i = 0; i < Scene.FIELD_HEIGHT / Scene.block_HEIGHT; i++)
+            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
             {
-                for (int j = 0; j < Scene.FIELD_WIDTH / Scene.block_WIDTH; j++)
+                for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
                 {
                     Rectangle rect = new Rectangle(X, Y, tankImage.Width, tankImage.Height);
                     if (direction == Direction.Up)
@@ -330,24 +303,21 @@ namespace TankTrouble
             {
                 if (b.shouldDraw)
                 {
-                    if (b.X > otherTank.X && b.X < otherTank.X + otherTank.tankImage.Width && b.Y > otherTank.Y && b.Y < otherTank.Y + otherTank.tankImage.Height)
+                    if (b.X > otherTank.X && b.X < otherTank.X + otherTank.tankImage.Width && b.Y > otherTank.Y && b.Y < otherTank.Y + otherTank.tankImage.Height && otherTank.isDead != true)
                     {
                         b.shouldDraw = false;
-                        
+                       // otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
 
                         //Play explode sound
                         if (!otherTank.isDead)
                         {
                             explodeSound.Play();
                             otherTank.isDead = true;
-                            killCount++; 
-                            timer_explosion.Start();
                         }
-                       
-                       
                         
+                      
                         otherTank.clearBullets();
-                        
+                        timer_explosion.Start();
                        
                        
                         return true;

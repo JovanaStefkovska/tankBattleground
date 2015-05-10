@@ -12,10 +12,10 @@ namespace TankTrouble
     public class Scene
     {
 
-        public static readonly int FIELD_WIDTH = 900;
-        public static readonly int FIELD_HEIGHT = 600;
-        public static readonly int block_WIDTH = 10;
-        public static readonly int block_HEIGHT = 10;
+        public readonly int FIELD_WIDTH = 900;
+        public readonly int FIELD_HEIGHT = 600;
+        public readonly int block_WIDTH = 10;
+        public readonly int block_HEIGHT = 10;
         public readonly int frame_HEIGHT = 50;
         public readonly int frame_width = 50;
         public readonly int sidePanel = 300;
@@ -25,25 +25,25 @@ namespace TankTrouble
         public Rectangle[][] rectangleMatrix;
         public Tank Tank1, Tank2;
         SoundPlayer fireSound;
-        Image ground;
 
-        
-        Image brick, greenTank, redTank;
+        public  int countPlayer1 ;
+        public  int countPlayer2 ;
+        public int countTwoTimes = 0;
+        Image brick, redtank, greenTank;
         Timer newGame;
+        Image ground;
         public Scene()
         {
             fireSound = new SoundPlayer(global::TankTrouble.Properties.Resources.fire);
-            brick = global::TankTrouble.Properties.Resources.brick;
-            greenTank = global::TankTrouble.Properties.Resources.greenTank_left;
-            redTank = global::TankTrouble.Properties.Resources.redTank_Left;
-            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 20);
-            Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH - 80, FIELD_HEIGHT - 60);
-            ground = global::TankTrouble.Properties.Resources._89F_ground_bottomjpg;
              newGame = new Timer();
             newGame.Interval = 1500;
             newGame.Tick += new EventHandler(newGame_tick);
-
-           
+            brick = global::TankTrouble.Properties.Resources.brick;
+            redtank = global::TankTrouble.Properties.Resources.redTank_Left;
+            greenTank = global::TankTrouble.Properties.Resources.greenTank_left;
+            ground = global::TankTrouble.Properties.Resources._89F_ground_bottomjpg;
+            countPlayer1 = 0;
+            countPlayer2 = 0;
         }
         public void newGame_tick(object sender, EventArgs e)
         {
@@ -52,14 +52,11 @@ namespace TankTrouble
         }
         public void Game()
         {
-
            
             boundsRectangle = new Rectangle(frame_width, frame_HEIGHT, FIELD_WIDTH, FIELD_HEIGHT);
-
-            Tank1.resetTank( Direction.Right,  30, 20);
-            Tank2.resetTank( Direction.Left, FIELD_WIDTH - 80, FIELD_HEIGHT - 60);
-            
            
+            Tank1 = new Tank(TankColor.Green, Direction.Right, boundsRectangle, 30, 30);
+            Tank2 = new Tank(TankColor.Red, Direction.Left, boundsRectangle, FIELD_WIDTH -80, FIELD_HEIGHT-60);
             pressedKeys = new List<Keys>();
             Tank1.addOtherTank(Tank2);
             Tank2.addOtherTank(Tank1);
@@ -285,11 +282,11 @@ namespace TankTrouble
        {
            Tank1.Fire(blockMatrix, rectangleMatrix);
            Tank2.Fire(blockMatrix, rectangleMatrix);
-          
+           
            if (Tank1.Destroy())
            {
-             
-               if (Tank1.killCount == 3)
+               countPlayer1++;
+               if (countPlayer1 == 5)
                {
                    DialogResult rez = MessageBox.Show("Player 1 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
@@ -298,14 +295,12 @@ namespace TankTrouble
                }
                else
                    newGame.Start();
-               
             
            }
            else if (Tank2.Destroy())
            {
-              
-
-               if (Tank2.killCount == 3)
+               countPlayer2++;
+               if (countPlayer2 == 5)
                {
                    DialogResult rez = MessageBox.Show("Player 2 is Victorious !", "We have a winner !",
                     MessageBoxButtons.OK);
@@ -324,16 +319,15 @@ namespace TankTrouble
        public void Draw(Graphics g)
        {
            Pen p = new Pen(new SolidBrush(Color.Black), 8);
-           Color background = Color.FromArgb(155, 116, 82);
+           Color background = Color.FromArgb(116, 77, 40);
            g.Clear(background);
            Color grassColor = Color.FromArgb(0, 92, 9);
            Brush b = new SolidBrush(grassColor);
-           g.FillRectangle(b, boundsRectangle);
+
            g.DrawRectangle(p, boundsRectangle);
+           g.DrawImageUnscaledAndClipped(greenTank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, 140, greenTank.Width, greenTank.Height));
+           g.DrawImageUnscaledAndClipped(redtank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, FIELD_HEIGHT - 160,redtank.Width, redtank.Height));
            g.DrawImageUnscaledAndClipped(ground, boundsRectangle);
-           g.DrawImageUnscaledAndClipped(greenTank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, 140, Tank1.tankImage.Width, Tank1.tankImage.Height));
-           g.DrawImageUnscaledAndClipped(redTank, new Rectangle(FIELD_WIDTH + 2 * frame_width + 50, FIELD_HEIGHT - 160, Tank2.tankImage.Width, Tank2.tankImage.Height));
-          
             
            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
            {

@@ -91,37 +91,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="greenTank_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="greenTank_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="greenTank_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="greenTank_up.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\kaboom.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\kaboom1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\greenTank_down.png" />
+    <None Include="Resources\grass.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\greenTank_right.png" />
+    <None Include="Resources\30164-1-1358619554.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\greenTank_up.png" />
+    <None Include="Resources\welcome1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\redTank_Down.png" />
+    <None Include="Resources\30164-1-13586195541.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\redTank_Left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redTank_Right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redTank_Up.png" />
+    <None Include="Resources\mauler_top.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\howtoplay.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\greenTank_left.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\welcome1.jpg" />
@@ -136,10 +139,34 @@
     <None Include="Resources\warMusic2.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\brick1.png" />
+    <None Include="Resources\brick.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\89F_ground-bottomjpg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenTank_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenTank_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenTank_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenTank_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redTank_Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redTank_Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redTank_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redTank_Up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

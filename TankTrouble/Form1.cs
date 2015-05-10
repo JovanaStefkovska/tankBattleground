@@ -25,7 +25,7 @@ namespace TankTrouble
         Rectangle aboutUs;
         Rectangle howToPlay;
         Rectangle quitGame;
-
+        bool canPress;
         bool drawGameBtn, drawAboutBtn, drawHowToBtn, drawQuitBtn;
         Timer t;
         SoundPlayer menuMusic;
@@ -33,7 +33,7 @@ namespace TankTrouble
         public Form1()
         {
             
-            //InitializeComponent();
+           // InitializeComponent();
       
             load();
         }
@@ -44,10 +44,10 @@ namespace TankTrouble
 
             DoubleBuffered = true;
             scene = new Scene();
-            this.Height = Scene.FIELD_HEIGHT + 2 * scene.frame_HEIGHT;
-            this.Width = Scene.FIELD_WIDTH + 2 * scene.frame_width + scene.sidePanel;
-            labelPlayer1.Location = new Point(Scene.FIELD_WIDTH + 2 * scene.frame_width, 200);
-            labelPlayer2.Location = new Point(Scene.FIELD_WIDTH + 2 * scene.frame_width, Scene.FIELD_HEIGHT - 100);
+            this.Height = scene.FIELD_HEIGHT + 2 * scene.frame_HEIGHT;
+            this.Width = scene.FIELD_WIDTH + 2 * scene.frame_width + scene.sidePanel;
+              labelPlayer1.Location = new Point(scene.FIELD_WIDTH + 2 * scene.frame_width, 200);
+            labelPlayer2.Location = new Point(scene.FIELD_WIDTH + 2 * scene.frame_width, scene.FIELD_HEIGHT - 100);
             drawScene = false;
             scene.Game();
              t = new Timer();
@@ -71,7 +71,7 @@ namespace TankTrouble
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
-
+            if(canPress)
             scene.keyDown(sender, e);    
             Invalidate();
                 
@@ -80,7 +80,7 @@ namespace TankTrouble
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if(canPress)
             scene.keyPressed(sender, e);
             Invalidate();
         }
@@ -91,11 +91,12 @@ namespace TankTrouble
         {
             if (scene.timerTick())
             {
+                t.Stop();
                 while (Controls.Count > 0)
                 {
                     Controls[0].Dispose();
                 }
-                t.Stop();
+              
                 load();
             }
             else Invalidate();
@@ -129,8 +130,8 @@ namespace TankTrouble
                 scene.Draw(graphics);
                
             }
-            labelPlayer1.Text = "Blue Tank "+scene.Tank1.killCount.ToString();
-            labelPlayer2.Text = "Red tank "+scene.Tank2.killCount.ToString();
+            labelPlayer1.Text = "Blue Tank "+scene.countPlayer1.ToString();
+            labelPlayer2.Text = "Red tank "+scene.countPlayer2.ToString();
         }
 
        
@@ -146,6 +147,7 @@ namespace TankTrouble
             if (e.Location.X > playGame.Left && e.Location.X < playGame.Right && e.Location.Y > playGame.Top && e.Location.Y < playGame.Bottom)
             {
                 drawScene = true;
+                canPress = true;
                 labelPlayer1.Visible = true;
                 labelPlayer2.Visible = true;
                 menuMusic.Stop();
