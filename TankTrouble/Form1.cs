@@ -20,7 +20,7 @@ namespace TankTrouble
         
         Scene scene;
         bool drawScene;
-
+       
         Rectangle playGame;
         Rectangle aboutUs;
         Rectangle howToPlay;
@@ -33,7 +33,7 @@ namespace TankTrouble
         public Form1()
         {
             
-           // InitializeComponent();
+           
       
             load();
         }
@@ -41,7 +41,7 @@ namespace TankTrouble
         public void load()
         {
             InitializeComponent();
-
+           
             DoubleBuffered = true;
             scene = new Scene();
             this.Height = Scene.FIELD_HEIGHT + 2 * Scene.frame_HEIGHT;
@@ -86,7 +86,7 @@ namespace TankTrouble
         }
         
        
-
+        // tick of main timer , starts with game
         public void timer_tick(object sender, EventArgs e)
         {
             if (scene.timerTick())
@@ -107,7 +107,7 @@ namespace TankTrouble
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
-          //  graphics.DrawImageUnscaledAndClipped(global::TankTrouble.Properties.Resources.welcome1,this.ClientRectangle);
+           
             graphics.FillRectangle(Brushes.Transparent, playGame);
             graphics.FillRectangle(Brushes.Transparent, howToPlay);
             graphics.FillRectangle(Brushes.Transparent, aboutUs);

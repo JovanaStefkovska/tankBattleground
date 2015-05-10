@@ -49,15 +49,17 @@ namespace TankTrouble
             explodeSound = new SoundPlayer(global::TankTrouble.Properties.Resources.Explosion);
             //countTwoTimes = 0;
         }
-
+        //adds reference object to the other tank
         public void addOtherTank(Tank t)
         {
             otherTank = t;
         }
+        // adds layout matrix
         public void addMatrix(Rectangle[][] rectangleMatrix)
         {
             this.rectangleMatrix = rectangleMatrix;
         }
+        // defines length of explosion 
         void timer_explosion_tick(object sender, EventArgs e)
         {
             otherTank.shouldDraw = false;
@@ -68,7 +70,7 @@ namespace TankTrouble
         }
 
         
-      
+      //draws tank
         public void Draw(Graphics g)
         {
           
@@ -96,6 +98,7 @@ namespace TankTrouble
 
             
         }
+        //checks if the rectangle of the tank intersects the other tank or a wall according to direction
         public bool canMove(bool [][]blockMatrix, Rectangle [][]rectangleMatrix)
         {
            
@@ -111,7 +114,7 @@ namespace TankTrouble
 
                         if (tankDirection == Direction.Up)
                         {
-                           Rectangle tnkRectangle = new Rectangle(X, Y - 10, tankImage.Width, tankImage.Height );
+                           Rectangle tnkRectangle = new Rectangle(X, Y , tankImage.Width, tankImage.Height );
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -126,7 +129,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Down)
                         {
-                            Rectangle tnkRectangle = new Rectangle(X, Y + 10, tankImage.Width, tankImage.Height);
+                            Rectangle tnkRectangle = new Rectangle(X, Y , tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -143,7 +146,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Left)
                         {
-                            Rectangle tnkRectangle = new Rectangle(X - 10, Y, tankImage.Width, tankImage.Height);
+                            Rectangle tnkRectangle = new Rectangle(X , Y, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -157,7 +160,7 @@ namespace TankTrouble
                         }
                         else if (tankDirection == Direction.Right)
                         {
-                           Rectangle tnkRectangle = new Rectangle(X + 10, Y, tankImage.Width, tankImage.Height);
+                           Rectangle tnkRectangle = new Rectangle(X , Y, tankImage.Width, tankImage.Height);
                             if (rectangleMatrix[i][j].IntersectsWith(tnkRectangle))
                             {
                                 return false;
@@ -182,7 +185,7 @@ namespace TankTrouble
                 return true;
         }
 
-
+        //checks if the rectangle of the tank intersects the other tank according to direction
         public bool check(Direction direction)
         {
             for (int i = 0; i < Scene.FIELD_HEIGHT / Scene.block_HEIGHT; i++)
@@ -220,6 +223,7 @@ namespace TankTrouble
             return true;
 
         }
+        // defines movemet of tank
         public void Move(Rectangle bounds, Direction direction)
         {
             if (!isDead)
@@ -282,17 +286,18 @@ namespace TankTrouble
             }
             
         }
+        // calls Move for every bullet
         public void Fire(bool[][] blockMatrix, Rectangle[][] rectangleMatrix)
         {
             foreach (Bullet b in bullets)
                 b.Move(blockMatrix, rectangleMatrix);
         }
-
+        //clears bullet list
         public void clearBullets()
         {
             bullets.Clear();
         }
-      
+      // destroys other tank
         public bool Destroy()
         {
 
@@ -303,7 +308,7 @@ namespace TankTrouble
                     if (b.X > otherTank.X && b.X < otherTank.X + otherTank.tankImage.Width && b.Y > otherTank.Y && b.Y < otherTank.Y + otherTank.tankImage.Height && otherTank.isDead != true)
                     {
                         b.shouldDraw = false;
-                       // otherTank.tankImage = global::TankTrouble.Properties.Resources.kaboom1;
+                      
 
                         //Play explode sound
                         if (!otherTank.isDead)

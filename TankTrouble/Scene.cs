@@ -45,11 +45,13 @@ namespace TankTrouble
             countPlayer1 = 0;
             countPlayer2 = 0;
         }
+        // delay to setting a new game
         public void newGame_tick(object sender, EventArgs e)
         {
             Game();
             newGame.Stop();
         }
+        // defines a game layout
         public void Game()
         {
            
@@ -65,6 +67,7 @@ namespace TankTrouble
 
 
         }
+        //generates field layout
         public void generateLayout()
         {
 
@@ -155,6 +158,7 @@ namespace TankTrouble
 
             }
         }
+        //calls Move upon key pess
        public void MoveTanks()
         {
 
@@ -192,7 +196,7 @@ namespace TankTrouble
                 }
             }
 
-
+          
             if (pressedKeys.Contains(Keys.Up))
             {
                 if (Tank2.canMove(blockMatrix, rectangleMatrix) || Tank2.tankDirection != Direction.Up)
@@ -231,7 +235,7 @@ namespace TankTrouble
         }
 
 
-
+        //fires bullet upon key press
        public void keyPressed(object sender, KeyPressEventArgs e)
        {
            if (e.KeyChar == (char)Keys.Tab)
@@ -277,7 +281,7 @@ namespace TankTrouble
 
            }
        }
-
+        // calls all functions that should be called in the main timer in the Form
        public bool timerTick()
        {
            Tank1.Fire(blockMatrix, rectangleMatrix);
@@ -315,7 +319,7 @@ namespace TankTrouble
            return false;
        }
 
-
+        //draws scene
        public void Draw(Graphics g)
        {
            Pen p = new Pen(new SolidBrush(Color.Black), 8);
@@ -348,12 +352,12 @@ namespace TankTrouble
            b.Dispose();
           
        }
-
+       //stops movemet of tank upon key release
        public void keyUp(KeyEventArgs e)
        {
                pressedKeys.Remove(e.KeyCode);
        }
-
+        //adds pressed key in list of pressed keys
        public void keyDown(object sender, KeyEventArgs e)
        {
            if (!pressedKeys.Contains(e.KeyCode))

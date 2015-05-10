@@ -9,16 +9,16 @@ namespace TankTrouble
 {
   public class Bullet
     {
+        //position 
        public int X, Y;
-       readonly int FIELD_WIDTH = 900;
-       readonly int FIELD_HEIGHT = 600;
-       readonly int block_WIDTH = 10;
-       readonly int block_HEIGHT = 10;
+      
       
  
        Direction direction;
+      //rectangle of the field 
        Rectangle bounds;
        public Brush brush;
+
        public bool shouldDraw;
         public Bullet(int X, int Y,Direction d, Rectangle r)
         {
@@ -30,7 +30,7 @@ namespace TankTrouble
         
             shouldDraw = true;
         }
-      
+      //draw bullet
         public void Draw(Graphics g)
         {
             brush = new SolidBrush(Color.Black);
@@ -41,7 +41,7 @@ namespace TankTrouble
             brush.Dispose();
             
         }
-
+      // define bullet movement
         public void Move(bool[][] blockMatrix, Rectangle[][] rectangleMatrix)
         {
             if (direction.Equals(Direction.Up))
@@ -112,12 +112,12 @@ namespace TankTrouble
             }
             
         }
-
+      // check if the bullet strikes a wall or boundries
         public bool checkMove(bool[][] blockMatrix, Rectangle[][] rectangleMatrix)
         {
-            for (int i = 0; i < FIELD_HEIGHT / block_HEIGHT; i++)
+            for (int i = 0; i < Scene.FIELD_HEIGHT / Scene.block_HEIGHT; i++)
             {
-                for (int j = 0; j < FIELD_WIDTH / block_WIDTH; j++)
+                for (int j = 0; j < Scene.FIELD_WIDTH / Scene.block_WIDTH; j++)
                 {
                     if (blockMatrix[i][j])
                     {
