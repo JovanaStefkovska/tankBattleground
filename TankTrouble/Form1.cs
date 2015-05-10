@@ -44,10 +44,10 @@ namespace TankTrouble
 
             DoubleBuffered = true;
             scene = new Scene();
-            this.Height = scene.FIELD_HEIGHT + 2 * scene.frame_HEIGHT;
-            this.Width = scene.FIELD_WIDTH + 2 * scene.frame_width + scene.sidePanel;
-              labelPlayer1.Location = new Point(scene.FIELD_WIDTH + 2 * scene.frame_width, 200);
-            labelPlayer2.Location = new Point(scene.FIELD_WIDTH + 2 * scene.frame_width, scene.FIELD_HEIGHT - 100);
+            this.Height = Scene.FIELD_HEIGHT + 2 * Scene.frame_HEIGHT;
+            this.Width = Scene.FIELD_WIDTH + 2 * Scene.frame_width + Scene.sidePanel;
+              labelPlayer1.Location = new Point(Scene.FIELD_WIDTH + 2 * Scene.frame_width, 200);
+            labelPlayer2.Location = new Point(Scene.FIELD_WIDTH + 2 * Scene.frame_width, Scene.FIELD_HEIGHT - 100);
             drawScene = false;
             scene.Game();
              t = new Timer();

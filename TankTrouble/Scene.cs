@@ -12,13 +12,13 @@ namespace TankTrouble
     public class Scene
     {
 
-        public readonly int FIELD_WIDTH = 900;
-        public readonly int FIELD_HEIGHT = 600;
-        public readonly int block_WIDTH = 10;
-        public readonly int block_HEIGHT = 10;
-        public readonly int frame_HEIGHT = 50;
-        public readonly int frame_width = 50;
-        public readonly int sidePanel = 300;
+        public static readonly int FIELD_WIDTH = 900;
+        public static readonly int FIELD_HEIGHT = 600;
+        public static readonly int block_WIDTH = 10;
+        public static readonly int block_HEIGHT = 10;
+        public static readonly int frame_HEIGHT = 50;
+        public static readonly int frame_width = 50;
+        public static readonly int sidePanel = 300;
         public List<Keys> pressedKeys;
         public Rectangle boundsRectangle;
         public bool[][] blockMatrix;
